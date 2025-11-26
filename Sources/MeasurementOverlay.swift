@@ -347,8 +347,7 @@ class OverlayView: NSView {
     private func drawMeasurementLabel(_ line: MeasurementLine) {
         guard line.distance >= 5 else { return }
 
-        let pixels = Int(round(line.distance))
-        let text = "\(pixels)\(AppConstants.Measurement.pixelsSuffix)"
+        let text = String(format: "%.1f", line.distance) + AppConstants.Measurement.pixelsSuffix
         let attributes = createTextAttributes(color: line.color)
         let textSize = text.size(withAttributes: attributes)
         let labelRect = calculateLabelRect(for: line, textSize: textSize)
